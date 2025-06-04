@@ -132,7 +132,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
     setFormData(prevData => {
       const newData = { ...prevData, ...data };
       
-      // Auto-advance for MCQ questions except Step 10 (Services)
+      // Auto-advance for MCQ steps, excluding 1 and 10–13
       if (currentStep !== 1 && currentStep !== 10 && currentStep !== 11 && currentStep !== 12 && currentStep !== 13) {
         if (
           (currentStep === 2 && newData.needLocalAdvisor !== null) ||
