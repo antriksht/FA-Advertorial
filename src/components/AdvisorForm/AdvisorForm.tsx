@@ -98,7 +98,11 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
   const handleNext = () => {
     if (validateCurrentStep()) {
       if (currentStep < totalSteps) {
-        setCurrentStep(currentStep + 1);
+        let nextStep = currentStep + 1;
+        if (currentStep === 8 && formData.hasAdvisor === false) {
+          nextStep = 10; // skip step 9 when user has no advisor
+        }
+        setCurrentStep(nextStep);
       } else {
         handleSubmit();
       }
@@ -107,7 +111,11 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
 
   const handlePrevious = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+      let prevStep = currentStep - 1;
+      if (prevStep === 9 && formData.hasAdvisor === false) {
+        prevStep = 8; // also skip step 9 when navigating backwards
+      }
+      setCurrentStep(prevStep);
     }
   };
 
@@ -213,13 +221,11 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
         );
       case 9:
         return formData.hasAdvisor ? (
-          <Step9SwitchReason 
-            value={formData.switchReason} 
+          <Step9SwitchReason
+            value={formData.switchReason}
             onChange={(switchReason) => updateFormData({ switchReason })}
           />
-        ) : (
-          <>{setCurrentStep(10)}</>
-        );
+        ) : null;
       case 10:
         return (
           <Step10Services 
