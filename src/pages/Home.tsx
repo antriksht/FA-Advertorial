@@ -57,7 +57,7 @@ const Home: React.FC = () => {
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-white bg-opacity-95 shadow-lg border-t border-gray-200 md:hidden animate-fade-in z-50">
           <button
             onClick={handleFindAdvisorClick}
-            className="w-full py-4 px-6 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-lg transition duration-300 shadow-md flex items-center justify-center"
+            className="cta-button w-full py-4 px-6 flex items-center justify-center"
           >
             Find My Financial Advisor
           </button>

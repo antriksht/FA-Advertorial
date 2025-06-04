@@ -36,41 +36,39 @@ const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <DollarSign className="h-8 w-8 text-primary-700" />
-            <span className="ml-2 text-xl font-serif font-bold text-primary-800">FinancialAdvisor.net</span>
+            <DollarSign className="h-8 w-8 text-brand" />
+            <span className="ml-2 text-xl font-serif font-bold text-brand">FinancialAdvisor.net</span>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('why-advisor')} 
-              className="text-secondary-700 hover:text-primary-700 font-medium transition duration-300"
+              className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               Why an Advisor
             </button>
             <button 
               onClick={() => scrollToSection('advisor-value')} 
-              className="text-secondary-700 hover:text-primary-700 font-medium transition duration-300"
+              className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               Benefits
             </button>
             <button 
               onClick={() => scrollToSection('how-it-works')} 
-              className="text-secondary-700 hover:text-primary-700 font-medium transition duration-300"
+              className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               How It Works
             </button>
             <button 
               onClick={() => scrollToSection('faqs')} 
-              className="text-secondary-700 hover:text-primary-700 font-medium transition duration-300"
+              className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               FAQs
             </button>
             <button
               onClick={onFindAdvisorClick}
-              className={`py-2 px-5 ${
-                isScrolled ? 'bg-primary-700 hover:bg-primary-800' : 'bg-accent-500 hover:bg-accent-600'
-              } text-white font-semibold rounded-lg transition duration-300 shadow-sm`}
+              className="cta-button py-2 px-5 shadow-sm"
             >
               Find My Advisor
             </button>
@@ -80,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
           <div className="flex md:hidden">
             <button
               onClick={onFindAdvisorClick}
-              className="mr-4 py-2 px-4 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-lg transition duration-300 shadow-sm text-sm"
+              className="cta-button mr-4 py-2 px-4 text-sm shadow-sm"
             >
               Find Advisor
             </button>
