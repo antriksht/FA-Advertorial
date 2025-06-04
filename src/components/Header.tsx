@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DollarSign } from 'lucide-react';
+import logo from '../assets/fa-logo.png';
 
 interface HeaderProps {
   onFindAdvisorClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -36,8 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <DollarSign className="h-8 w-8 text-brand" />
-            <span className="ml-2 text-xl font-serif font-bold text-brand">FinancialAdvisor.net</span>
+            <img src={logo} alt="FinancialAdvisor.net logo" className="h-8 w-auto" />
           </div>
           
           {/* Desktop Navigation */}
