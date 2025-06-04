@@ -40,14 +40,14 @@ const SuccessScreen: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
             <a
               href="#"
-              className="py-3 px-6 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-lg transition duration-300 shadow-md flex items-center justify-center"
+              className="cta-button py-3 px-6 flex items-center justify-center"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Schedule a Consultation
             </a>
             <a
               href="#"
-              className="py-3 px-6 border border-primary-600 text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition duration-300"
+              className="py-3 px-6 border border-brand text-brand font-semibold rounded-lg hover:bg-brand/10 transition duration-300"
             >
               Learn More About Our Process
             </a>

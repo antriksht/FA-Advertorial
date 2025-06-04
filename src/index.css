@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-brand;
+  }
+}
+
+@layer components {
+  .cta-button {
+    @apply bg-brand text-white font-semibold rounded-lg transition duration-300 shadow-md;
+  }
+  .cta-button:hover {
+    @apply bg-brand-dark;
+  }
+}

@@ -34,14 +34,14 @@ const Hero: React.FC<HeroProps> = ({ onFindAdvisorClick }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={onFindAdvisorClick}
-                className="py-4 px-8 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-lg transition duration-300 shadow-md flex items-center justify-center group"
+                className="cta-button py-4 px-8 flex items-center justify-center group"
               >
                 Find My Financial Advisor
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
               <button
                 onClick={() => document.getElementById('why-advisor')?.scrollIntoView({ behavior: 'smooth' })}
-                className="py-4 px-8 border border-primary-500 text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition duration-300"
+                className="py-4 px-8 border border-brand text-brand font-semibold rounded-lg hover:bg-brand/10 transition duration-300"
               >
                 Learn More
               </button>

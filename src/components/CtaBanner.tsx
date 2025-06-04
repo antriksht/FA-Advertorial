@@ -35,7 +35,7 @@ const CtaBanner: React.FC<CtaBannerProps> = ({ onFindAdvisorClick }) => {
           </p>
           <button
             onClick={onFindAdvisorClick}
-            className="py-4 px-8 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-lg transition duration-300 shadow-md inline-flex items-center group"
+            className="cta-button py-4 px-8 inline-flex items-center group"
           >
             Get Matched Now
             <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
