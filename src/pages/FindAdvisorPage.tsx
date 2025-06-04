@@ -1,12 +1,11 @@
 import React from 'react';
 import AdvisorForm from '../components/AdvisorForm/AdvisorForm';
-import { DollarSign } from 'lucide-react';
+import logo from '../assets/fa-logo.png';
 
 const LogoHeader: React.FC = () => (
   <header className="py-4 shadow-md bg-white">
     <div className="container mx-auto px-4 flex items-center">
-      <DollarSign className="h-8 w-8 text-primary-700" />
-      <span className="ml-2 text-xl font-serif font-bold text-primary-800">FinancialAdvisor.net</span>
+      <img src={logo} alt="FinancialAdvisor.net logo" className="h-8 w-auto" />
     </div>
   </header>
 );

@@ -1,5 +1,6 @@
 import React from 'react';
-import { DollarSign, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+import logo from '../assets/fa-logo.png';
 
 const Footer: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center mb-6">
-              <DollarSign className="h-7 w-7 text-accent-400" />
+              <img src={logo} alt="FinancialAdvisor.net logo" className="h-7 w-auto" />
               <span className="ml-2 text-xl font-serif font-bold text-white">AdvisorMatch</span>
             </div>
             <p className="text-secondary-300 mb-6">
