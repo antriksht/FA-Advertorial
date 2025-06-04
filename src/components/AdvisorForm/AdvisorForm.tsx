@@ -306,7 +306,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
                   <div className={`ml-auto ${currentStep === 1 ? 'w-full' : ''}`}>
                     <button
                       onClick={handleNext}
-                      className={`py-3 px-6 bg-primary-700 hover:bg-primary-800 text-white font-semibold rounded-lg transition duration-300 flex items-center justify-center ${
+                      className={`cta-button py-3 px-6 flex items-center justify-center ${
                         currentStep === 1 ? 'w-full' : ''
                       }`}
                     >
