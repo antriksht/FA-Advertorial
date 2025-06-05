@@ -131,9 +131,15 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
   const handlePrevious = () => {
     if (currentStep > 1) {
       let prevStep = currentStep - 1;
-      if (prevStep === 9 && formData.hasAdvisor === false) {
-        prevStep = 8; // also skip step 9 when navigating backwards
+
+      // Skip the animation step when going back from the phone step
+      if (currentStep === 13) {
+        prevStep = 11;
+      } else if (prevStep === 9 && formData.hasAdvisor === false) {
+        // Also skip step 9 when navigating backwards
+        prevStep = 8;
       }
+
       setCurrentStep(prevStep);
     }
   };

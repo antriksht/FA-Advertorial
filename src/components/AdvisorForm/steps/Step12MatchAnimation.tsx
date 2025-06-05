@@ -9,8 +9,10 @@ const Step12MatchAnimation: React.FC<Step12MatchAnimationProps> = ({ onComplete 
   const [matched, setMatched] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setMatched(true), 3000);
-    const timer2 = setTimeout(onComplete, 4000);
+    const duration = 3000 + Math.floor(Math.random() * 3000); // 3–6 seconds
+    const timer1 = setTimeout(() => setMatched(true), duration - 1000);
+    const timer2 = setTimeout(onComplete, duration);
+    
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
