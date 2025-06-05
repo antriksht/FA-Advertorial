@@ -7,7 +7,7 @@ export interface FormData {
   income: string;
   portfolioSize: string;
   hasAdvisor: boolean | null;
-  switchReason: string;
+  switchReason: string[];
   services: string[];
   email: string;
   name: string;
