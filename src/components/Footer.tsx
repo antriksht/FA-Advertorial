@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-accent-400 mr-3" />
-                <span className="text-secondary-300">contact@advisormatch.com</span>
+                <span className="text-secondary-300">contact@financialadvisor.net</span>
               </li>
             </ul>
           </div>
@@ -83,10 +83,10 @@ const Footer: React.FC = () => {
         <div className="border-t border-secondary-700 pt-8">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center">
             <p className="text-secondary-400 text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} AdvisorMatch. All rights reserved.
+              &copy; {new Date().getFullYear()} Financial Advisor. All rights reserved.
             </p>
             <p className="text-secondary-400 text-sm md:text-right">
-              Matching is free. Not all advisors may be available in all areas. AdvisorMatch is not a registered investment advisor.
+              Matching is free. Not all advisors may be available in all areas. FinancialAdvisor is not a registered investment advisor.
             </p>
           </div>
         </div>

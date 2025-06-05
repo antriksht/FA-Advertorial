@@ -55,7 +55,7 @@ const SuccessScreen: React.FC = () => {
         </div>
         
         <p className="text-sm text-secondary-500 mt-6">
-          Have questions? Email us at support@advisormatch.com or call (555) 123-4567
+          Have questions? Email us at support@financialadvisor.net or call (555) 123-4567
         </p>
       </div>
     </div>
