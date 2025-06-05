@@ -12,6 +12,7 @@ import Step8CurrentAdvisor from './steps/Step8CurrentAdvisor';
 import Step9SwitchReason from './steps/Step9SwitchReason';
 import Step10Services from './steps/Step10Services';
 import Step11Email from './steps/Step11Email';
+import Step12MatchAnimation from './steps/Step12MatchAnimation';
 import Step12Contact from './steps/Step12Contact';
 import Step13Additional from './steps/Step13Additional';
 import SuccessScreen from './steps/SuccessScreen';
@@ -54,7 +55,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
     agreeToTerms: true,
   });
 
-  const totalSteps = 13;
+  const totalSteps = 14;
 
   useEffect(() => {
     if (currentStep > 0 && currentStep <= totalSteps) {
@@ -80,11 +81,29 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
       const zipRegex = /^\d{5}(-\d{4})?$/;
       newValidation.zipCode = zipRegex.test(formData.zipCode);
       isValid = newValidation.zipCode;
+    } else if (currentStep === 2) {
+      isValid = formData.needLocalAdvisor !== null;
+    } else if (currentStep === 3) {
+      isValid = formData.retirementHorizon !== '';
+    } else if (currentStep === 4) {
+      isValid = formData.homeOwnership !== null;
+    } else if (currentStep === 5) {
+      isValid = formData.businessOwnership !== null;
+    } else if (currentStep === 6) {
+      isValid = formData.income !== '';
+    } else if (currentStep === 7) {
+      isValid = formData.portfolioSize !== '';
+    } else if (currentStep === 8) {
+      isValid = formData.hasAdvisor !== null;
+    } else if (currentStep === 9) {
+      isValid = formData.switchReason !== '' || formData.hasAdvisor === false;
+    } else if (currentStep === 10) {
+      isValid = formData.services.length > 0;
     } else if (currentStep === 11) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       newValidation.email = emailRegex.test(formData.email);
       isValid = newValidation.email;
-    } else if (currentStep === 12) {
+    } else if (currentStep === 13) {
       const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
       newValidation.phone = phoneRegex.test(formData.phone);
       newValidation.agreeToTerms = formData.agreeToTerms;
@@ -112,10 +131,50 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
   const handlePrevious = () => {
     if (currentStep > 1) {
       let prevStep = currentStep - 1;
-      if (prevStep === 9 && formData.hasAdvisor === false) {
-        prevStep = 8; // also skip step 9 when navigating backwards
+
+      // Skip the animation step when going back from the phone step
+      if (currentStep === 13) {
+        prevStep = 11;
+      } else if (prevStep === 9 && formData.hasAdvisor === false) {
+        // Also skip step 9 when navigating backwards
+        prevStep = 8;
       }
+
       setCurrentStep(prevStep);
+    }
+  };
+
+  const isNextDisabled = () => {
+    switch (currentStep) {
+      case 1:
+        return !/^\d{5}(-\d{4})?$/.test(formData.zipCode);
+      case 2:
+        return formData.needLocalAdvisor === null;
+      case 3:
+        return formData.retirementHorizon === '';
+      case 4:
+        return formData.homeOwnership === null;
+      case 5:
+        return formData.businessOwnership === null;
+      case 6:
+        return formData.income === '';
+      case 7:
+        return formData.portfolioSize === '';
+      case 8:
+        return formData.hasAdvisor === null;
+      case 9:
+        return formData.hasAdvisor ? formData.switchReason === '' : false;
+      case 10:
+        return formData.services.length === 0;
+      case 11:
+        return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+      case 13:
+        return (
+          !/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(formData.phone) ||
+          !formData.agreeToTerms
+        );
+      default:
+        return false;
     }
   };
 
@@ -137,11 +196,19 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
   };
 
   const updateFormData = (data: Partial<FormData>) => {
+    let autoStep: number | null = null;
     setFormData(prevData => {
       const newData = { ...prevData, ...data };
-      
-      // Auto-advance for MCQ steps, excluding 1 and 10–13
-      if (currentStep !== 1 && currentStep !== 10 && currentStep !== 11 && currentStep !== 12 && currentStep !== 13) {
+
+      // Auto-advance for MCQ steps, excluding steps with text inputs
+      if (
+        currentStep !== 1 &&
+        currentStep !== 10 &&
+        currentStep !== 11 &&
+        currentStep !== 12 &&
+        currentStep !== 13 &&
+        currentStep !== 14
+      ) {
         if (
           (currentStep === 2 && newData.needLocalAdvisor !== null) ||
           (currentStep === 3 && newData.retirementHorizon !== '') ||
@@ -152,12 +219,19 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
           (currentStep === 8 && newData.hasAdvisor !== null) ||
           (currentStep === 9 && newData.switchReason !== '')
         ) {
-          setTimeout(() => handleNext(), 300);
+          autoStep = currentStep + 1;
+          if (currentStep === 8 && newData.hasAdvisor === false) {
+            autoStep = 10;
+          }
         }
       }
-      
+
       return newData;
     });
+
+    if (autoStep) {
+      setTimeout(() => setCurrentStep(autoStep as number), 300);
+    }
   };
 
   const renderCurrentStep = () => {
@@ -235,15 +309,17 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
         );
       case 11:
         return (
-          <Step11Email 
-            value={formData.email} 
+          <Step11Email
+            value={formData.email}
             onChange={(email) => updateFormData({ email })}
             isValid={validation.email}
           />
         );
       case 12:
+        return <Step12MatchAnimation onComplete={handleNext} />;
+      case 13:
         return (
-          <Step12Contact 
+          <Step12Contact
             name={formData.name}
             phone={formData.phone}
             agreeToTerms={formData.agreeToTerms}
@@ -251,10 +327,10 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
             validation={validation}
           />
         );
-      case 13:
+      case 14:
         return (
-          <Step13Additional 
-            value={formData.additionalInfo} 
+          <Step13Additional
+            value={formData.additionalInfo}
             onChange={(additionalInfo) => updateFormData({ additionalInfo })}
           />
         );
@@ -293,7 +369,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
                 </div>
                 
                 <div className="flex justify-between mt-8">
-                  {currentStep > 1 && (
+                  {currentStep > 1 && currentStep !== 12 && (
                     <button
                       onClick={handlePrevious}
                       className="py-3 px-6 border border-gray-300 rounded-lg text-secondary-700 hover:bg-gray-50 transition duration-300 flex items-center"
@@ -303,17 +379,20 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
                     </button>
                   )}
                   
-                  <div className={`ml-auto ${currentStep === 1 ? 'w-full' : ''}`}>
-                    <button
-                      onClick={handleNext}
-                      className={`cta-button py-3 px-6 flex items-center justify-center ${
-                        currentStep === 1 ? 'w-full' : ''
-                      }`}
-                    >
-                      {currentStep === totalSteps ? 'Submit' : 'Continue'}
-                      {currentStep !== totalSteps && <ChevronRight className="ml-2 h-5 w-5" />}
-                    </button>
-                  </div>
+                  {currentStep !== 12 && (
+                    <div className={`ml-auto ${currentStep === 1 ? 'w-full' : ''}`}>
+                      <button
+                        onClick={handleNext}
+                        disabled={isNextDisabled()}
+                        className={`cta-button py-3 px-6 flex items-center justify-center ${
+                          currentStep === 1 ? 'w-full' : ''
+                        } ${isNextDisabled() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      >
+                        {currentStep === totalSteps ? 'Submit' : 'Continue'}
+                        {currentStep !== totalSteps && <ChevronRight className="ml-2 h-5 w-5" />}
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </>
