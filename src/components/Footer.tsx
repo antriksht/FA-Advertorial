@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center mb-6">
               <img src={logo} alt="FinancialAdvisor.net logo" className="h-7 w-auto" />
-              <span className="ml-2 text-xl font-serif font-bold text-white">AdvisorMatch</span>
+              <span className="ml-2 text-xl font-serif font-bold text-white"></span>
             </div>
             <p className="text-secondary-300 mb-6">
               Connecting you with trusted financial advisors who can help you achieve your financial goals.
