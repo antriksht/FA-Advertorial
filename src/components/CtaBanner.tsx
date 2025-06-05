@@ -15,7 +15,7 @@ const CtaBanner: React.FC<CtaBannerProps> = ({ onFindAdvisorClick }) => {
   return (
     <section 
       ref={ref}
-      className="py-16 md:py-20 bg-primary-900 relative overflow-hidden"
+      className="py-16 md:py-20 bg-primary-700 relative overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary-800 rounded-full filter blur-3xl opacity-50"></div>
