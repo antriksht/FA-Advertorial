@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import Step1ZipCode from './steps/Step1ZipCode';
@@ -28,6 +28,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const formRef = useRef<HTMLDivElement | null>(null);
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
@@ -39,7 +40,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
     income: '',
     portfolioSize: '',
     hasAdvisor: null,
-    switchReason: '',
+    switchReason: [],
     services: [],
     email: '',
     name: '',
@@ -73,6 +74,12 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
     }
   }, [currentStep]);
 
+  useEffect(() => {
+    if (currentStep > 1 && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [currentStep]);
+
   const validateCurrentStep = (): boolean => {
     let isValid = true;
     const newValidation = { ...validation };
@@ -96,7 +103,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
     } else if (currentStep === 8) {
       isValid = formData.hasAdvisor !== null;
     } else if (currentStep === 9) {
-      isValid = formData.switchReason !== '' || formData.hasAdvisor === false;
+      isValid = formData.switchReason.length > 0 || formData.hasAdvisor === false;
     } else if (currentStep === 10) {
       isValid = formData.services.length > 0;
     } else if (currentStep === 11) {
@@ -163,7 +170,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
       case 8:
         return formData.hasAdvisor === null;
       case 9:
-        return formData.hasAdvisor ? formData.switchReason === '' : false;
+        return formData.hasAdvisor ? formData.switchReason.length === 0 : false;
       case 10:
         return formData.services.length === 0;
       case 11:
@@ -216,8 +223,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
           (currentStep === 5 && newData.businessOwnership !== null) ||
           (currentStep === 6 && newData.income !== '') ||
           (currentStep === 7 && newData.portfolioSize !== '') ||
-          (currentStep === 8 && newData.hasAdvisor !== null) ||
-          (currentStep === 9 && newData.switchReason !== '')
+          (currentStep === 8 && newData.hasAdvisor !== null)
         ) {
           autoStep = currentStep + 1;
           if (currentStep === 8 && newData.hasAdvisor === false) {
@@ -361,7 +367,7 @@ const AdvisorForm: React.FC<AdvisorFormProps> = ({ visible }) => {
                 </p>
               </div>
               
-              <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+              <div ref={formRef} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                 <FormProgress currentStep={currentStep} totalSteps={totalSteps} />
                 
                 <div className="mt-8 mb-10">
