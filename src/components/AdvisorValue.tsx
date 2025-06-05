@@ -78,7 +78,7 @@ const AdvisorValue: React.FC = () => {
             style={{ transitionDelay: '400ms' }}
           >
             <div className="text-center mb-8">
-              <h3 className="font-serif text-2xl md:text-3xl font-semibold mb-4">The Advisor Advantage</h3>
+              <h3 className="font-serif text-2xl md:text-3xl font-semibold mb-4 text-white">The Advisor Advantage</h3>
               <p className="text-primary-100">Studies show that working with a financial advisor can potentially add 1.5% to 4% in net returns annually over time.*</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
