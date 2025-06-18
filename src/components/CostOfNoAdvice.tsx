@@ -12,17 +12,17 @@ const CostOfNoAdvice: React.FC = () => {
     {
       icon: <TrendingDown className="h-8 w-8 text-red-500" />,
       title: "Poor Diversification",
-      description: "Tech stocks sank over 35% in 2022, leaving concentrated portfolios reeling. Diversifying helps reduce that risk."
+      description: "Tech stocks fell hard in 2024, and investors with all their money in one area saw big losses. Spreading your money out helps reduce that risk."
     },
     {
       icon: <PiggyBank className="h-8 w-8 text-red-500" />,
       title: "No Estate Plan",
-      description: "A 2023 survey found 73% of Americans lack an estate plan, putting their hard-earned assets at risk."
+      description: "67% of Americans still don’t have a will in 2025. Without one, families can face delays and legal problems after a death."
     },
     {
       icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
       title: "Emotion-Driven Investing",
-      description: "Markets plunged 34% in early 2020 then quickly rebounded. Knee-jerk reactions can lock in losses."
+      description: "When markets drop, many people panic and sell. But markets often bounce back—selling too soon can lock in losses."
     },
     {
       icon: <DollarSign className="h-8 w-8 text-red-500" />,
@@ -37,7 +37,7 @@ const CostOfNoAdvice: React.FC = () => {
     {
       icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
       title: "Financial Stress",
-      description: "Uncertainty about your financial future creates ongoing anxiety and impacts your quality of life."
+      description: "Not having a plan or clear direction with money creates constant worry—and makes it harder to feel secure about the future."
     }
   ];
 
