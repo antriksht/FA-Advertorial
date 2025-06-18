@@ -22,7 +22,7 @@ const CostOfNoAdvice: React.FC = () => {
     {
       icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
       title: "Emotion-Driven Investing",
-      description: "When markets drop, many people panic and sell. But markets often bounce back—selling too soon can lock in losses."
+      description: "When markets drop, many people panic and sell. But markets often bounce back selling too soon can lock in losses."
     },
     {
       icon: <DollarSign className="h-8 w-8 text-red-500" />,
@@ -37,7 +37,7 @@ const CostOfNoAdvice: React.FC = () => {
     {
       icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
       title: "Financial Stress",
-      description: "Not having a plan or clear direction with money creates constant worry—and makes it harder to feel secure about the future."
+      description: "Not having a plan or clear direction with money creates constant worry and makes it harder to feel secure about the future."
     }
   ];
 
