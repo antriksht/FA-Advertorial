@@ -11,18 +11,28 @@ const CostOfNoAdvice: React.FC = () => {
   const costs = [
     {
       icon: <TrendingDown className="h-8 w-8 text-red-500" />,
-      title: "Poor Investment Decisions",
-      description: "Without expert guidance, many individuals make emotionally-driven investment choices, often buying high and selling low."
+      title: "Poor Diversification",
+      description: "Tech stocks sank over 35% in 2022, leaving concentrated portfolios reeling. Diversifying helps reduce that risk."
     },
     {
       icon: <PiggyBank className="h-8 w-8 text-red-500" />,
-      title: "Missed Retirement Goals",
-      description: "Inadequate planning leads to insufficient savings and unrealistic expectations about retirement lifestyle."
+      title: "No Estate Plan",
+      description: "A 2023 survey found 73% of Americans lack an estate plan, putting their hard-earned assets at risk."
+    },
+    {
+      icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
+      title: "Emotion-Driven Investing",
+      description: "Markets plunged 34% in early 2020 then quickly rebounded. Knee-jerk reactions can lock in losses."
+    },
+    {
+      icon: <DollarSign className="h-8 w-8 text-red-500" />,
+      title: "Undefined Goals",
+      description: "37% of adults tapped emergency savings last year. Clear objectives help keep plans on track."
     },
     {
       icon: <DollarSign className="h-8 w-8 text-red-500" />,
       title: "Tax Inefficiencies",
-      description: "Missing out on tax-advantaged strategies can cost thousands in unnecessary tax payments over your lifetime."
+      description: "Missing out on tax-advantaged strategies can cost thousands in unnecessary payments over your lifetime."
     },
     {
       icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
@@ -49,7 +59,7 @@ const CostOfNoAdvice: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {costs.map((cost, index) => (
               <div 
                 key={index}
