@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ onFindAdvisorClick }) => {
               Avoid Costly Mistakes &amp; Safeguard Your Wealth
             </h1>
             <p className="text-lg md:text-xl text-secondary-700 max-w-3xl mx-auto mb-10 leading-relaxed">
-              73% of Americans don&apos;t have an estate plan. Get matched with a vetted financial advisor who can help protect your assets and secure your future.
+              67% of Americans don&apos;t have an estate plan. Get matched with a vetted financial advisor who can help protect your assets and secure your future.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
