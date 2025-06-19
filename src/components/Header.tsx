@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../assets/fa-logo.png';
+import { useBannerVisible } from '../hooks/useBannerVisible'; // <-- custom hook
 
 interface HeaderProps {
   onFindAdvisorClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -8,6 +9,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isBannerVisible = useBannerVisible(); // tracks banner visibility
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,39 +30,40 @@ const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+    <header
+      className={`fixed left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
       }`}
+      style={{ top: isBannerVisible ? '40px' : '0px' }} // <-- dynamic top spacing
     >
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img src={logo} alt="FinancialAdvisor.net logo" className="h-8 w-auto" />
           </div>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('why-advisor')} 
+            <button
+              onClick={() => scrollToSection('why-advisor')}
               className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               Why an Advisor
             </button>
-            <button 
-              onClick={() => scrollToSection('advisor-value')} 
+            <button
+              onClick={() => scrollToSection('advisor-value')}
               className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               Benefits
             </button>
-            <button 
-              onClick={() => scrollToSection('how-it-works')} 
+            <button
+              onClick={() => scrollToSection('how-it-works')}
               className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               How It Works
             </button>
-            <button 
-              onClick={() => scrollToSection('faqs')} 
+            <button
+              onClick={() => scrollToSection('faqs')}
               className="text-secondary-700 hover:text-brand font-medium transition duration-300"
             >
               FAQs
@@ -72,16 +75,16 @@ const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
               Find My Advisor
             </button>
           </nav>
-          
+
           {/* Mobile Menu Button */}
           <div className="flex md:hidden">
-<button
-  onClick={onFindAdvisorClick}
-  className="hidden md:block cta-button mr-4 py-2 px-4 text-sm shadow-sm"
->
-  Find Advisor
-</button>
-            <button 
+            <button
+              onClick={onFindAdvisorClick}
+              className="hidden md:block cta-button mr-4 py-2 px-4 text-sm shadow-sm"
+            >
+              Find Advisor
+            </button>
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-secondary-800 focus:outline-none"
             >
@@ -95,31 +98,31 @@ const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
-              <button 
-                onClick={() => scrollToSection('why-advisor')} 
+              <button
+                onClick={() => scrollToSection('why-advisor')}
                 className="text-secondary-700 hover:text-primary-700 font-medium transition py-2"
               >
                 Why an Advisor
               </button>
-              <button 
-                onClick={() => scrollToSection('advisor-value')} 
+              <button
+                onClick={() => scrollToSection('advisor-value')}
                 className="text-secondary-700 hover:text-primary-700 font-medium transition py-2"
               >
                 Benefits
               </button>
-              <button 
-                onClick={() => scrollToSection('how-it-works')} 
+              <button
+                onClick={() => scrollToSection('how-it-works')}
                 className="text-secondary-700 hover:text-primary-700 font-medium transition py-2"
               >
                 How It Works
               </button>
-              <button 
-                onClick={() => scrollToSection('faqs')} 
+              <button
+                onClick={() => scrollToSection('faqs')}
                 className="text-secondary-700 hover:text-primary-700 font-medium transition py-2"
               >
                 FAQs

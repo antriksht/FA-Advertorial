@@ -11,6 +11,8 @@ import CtaBanner from '../components/CtaBanner';
 import Faqs from '../components/Faqs';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import AdvertorialBanner from '../components/AdvertorialBanner';
+import USMap from '../components/USMap.tsx';
 
 const Home: React.FC = () => {
   const [showFloatingCta, setShowFloatingCta] = useState(false);
@@ -39,6 +41,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-secondary-900">
+      <AdvertorialBanner />
       <Header onFindAdvisorClick={handleFindAdvisorClick} />
       <main>
         <Hero onFindAdvisorClick={handleFindAdvisorClick} />
@@ -49,6 +52,7 @@ const Home: React.FC = () => {
         <Testimonials />
         <CtaBanner onFindAdvisorClick={handleFindAdvisorClick} />
         <Faqs />
+        <USMap />
       </main>
       <Footer />
       <ScrollToTop />
