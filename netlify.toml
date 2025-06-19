@@ -1,6 +1,7 @@
 [build]
   command = "npm install --legacy-peer-deps && npm run build"
-  publish = "dist" # change to "build" if that's your output folder (default for Create React App)
+  publish = "dist"
+  node_version = "18.19.0"
 
 [[redirects]]
   from = "/*"
