@@ -1,49 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import USAMap from 'react-usa-map';
-import '../hooks/USMap.css';
+import {
+  ComposableMap,
+  Geographies,
+  Geography
+} from 'react-simple-maps';
 
-const stateNames: Record<string, string> = {
-  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
-  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', FL: 'Florida', GA: 'Georgia',
-  HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa',
-  KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland',
-  MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri',
-  MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey',
-  NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio',
-  OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina',
-  SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont',
-  VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming',
-  DC: 'District of Columbia'
-};
+// You can also host and use your own TopoJSON file for faster performance
+const geoUrl = '../hooks/states-10m.json';
 
 const USMap: React.FC = () => {
   const navigate = useNavigate();
   const [tooltip, setTooltip] = useState<{ name: string; x: number; y: number } | null>(null);
 
-  const mapHandler = (event: React.MouseEvent<SVGPathElement, MouseEvent>) => {
-    const stateAbbr = event.currentTarget.dataset.name;
-    if (stateAbbr) {
-      navigate(`/find-advisor?state=${encodeURIComponent(stateAbbr)}`);
-    }
+  const handleClick = (geo: any) => {
+    const stateName = geo.properties.name;
+    navigate(`/find-advisor?state=${encodeURIComponent(stateName)}`);
   };
 
-  const handleMouseMove = (event: React.MouseEvent<SVGElement, MouseEvent>) => {
-    const target = event.target as SVGPathElement;
-    const stateAbbr = target?.dataset?.name;
-    if (stateAbbr) {
-      setTooltip({
-        name: stateNames[stateAbbr] || stateAbbr,
-        x: event.clientX,
-        y: event.clientY
-      });
-    } else {
-      setTooltip(null);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setTooltip(null);
+  const handleMouseMove = (
+    geo: any,
+    evt: React.MouseEvent<SVGPathElement, MouseEvent>
+  ) => {
+    setTooltip({
+      name: geo.properties.name,
+      x: evt.clientX,
+      y: evt.clientY
+    });
   };
 
   return (
@@ -51,16 +34,26 @@ const USMap: React.FC = () => {
       <div className="container mx-auto px-4 text-center relative">
         <h2 className="text-2xl font-bold mb-4">Find an Advisor by State</h2>
         <div className="mx-auto inline-block max-w-full">
-          <div
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            <USAMap
-              width="960"
-              height="600"
-              onClick={mapHandler}
-            />
-          </div>
+          <ComposableMap projection="geoAlbersUsa" width={960} height={600}>
+            <Geographies geography={geoUrl}>
+              {({ geographies }) =>
+                geographies.map((geo) => (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    onClick={() => handleClick(geo)}
+                    onMouseMove={(evt) => handleMouseMove(geo, evt)}
+                    onMouseLeave={() => setTooltip(null)}
+                    style={{
+                      default: { fill: '#E0E0E0', outline: 'none' },
+                      hover: { fill: '#B0B0B0', outline: 'none' },
+                      pressed: { fill: '#7B7B7B', outline: 'none' }
+                    }}
+                  />
+                ))
+              }
+            </Geographies>
+          </ComposableMap>
         </div>
 
         {tooltip && (
