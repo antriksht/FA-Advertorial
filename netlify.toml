@@ -2,6 +2,13 @@
   command = "npm install --legacy-peer-deps && npm run build"
   publish = "dist"
 
+
+[[plugins]]
+  package = "netlify-plugin-npm-install"
+  [plugins.inputs]
+  npm_version = "9.8.1"
+
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
