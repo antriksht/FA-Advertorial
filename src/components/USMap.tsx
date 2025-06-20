@@ -5,6 +5,7 @@ import {
   Geographies,
   Geography
 } from 'react-simple-maps';
+import { US_STATES } from '../data/usStates';
 
 interface GeoState {
   rsmKey: string;
@@ -23,13 +24,36 @@ const USMap: React.FC = () => {
   const navigate = useNavigate();
   const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchError, setSearchError] = useState("");
 
   const handleStateClick = (stateName: string) => {
     navigate(`/find-advisor?state=${encodeURIComponent(stateName)}`);
   };
 
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) {
+      setSearchError("Please enter a state");
+      return;
+    }
+    const match = US_STATES.find(
+      (s) =>
+        s.name.toLowerCase() === query ||
+        s.abbreviation.toLowerCase() === query
+    );
+    if (match) {
+      setSearchError("");
+      handleStateClick(match.name);
+    } else {
+      setSearchError("State not found");
+    }
+  };
+
   const handleMouseMove = (event: React.MouseEvent, stateName: string) => {
-    setTooltipContent(stateName);
+    const abbr = US_STATES.find(s => s.name === stateName)?.abbreviation;
+    setTooltipContent(abbr ? `${stateName} (${abbr})` : stateName);
     setTooltipPosition({ x: event.clientX, y: event.clientY });
   };
 
@@ -40,6 +64,17 @@ const USMap: React.FC = () => {
         <p className="text-lg text-secondary-700">
               Hear from people who found their perfect financial match through our service.
             </p>
+        <form onSubmit={handleSearchSubmit} className="flex justify-center mb-4 space-x-2">
+          <input
+            type="text"
+            className="border rounded-md p-2 w-48"
+            placeholder="Search state"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type="submit" className="cta-button px-4 py-2">Go</button>
+        </form>
+        {searchError && <p className="text-red-600 mb-2">{searchError}</p>}
         <div className="relative mx-auto" style={{ maxWidth: '800px' }}>
           <ComposableMap
             projection="geoAlbersUsa"
