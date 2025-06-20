@@ -26,10 +26,10 @@ const Hero: React.FC<HeroProps> = ({ onFindAdvisorClick }) => {
         <div className="max-w-5xl mx-auto">
           <div className={`text-center transition duration-1000 ${inView ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-900 leading-tight mb-6">
-              Your Financial Goals Deserve the Right Advisor
+              Avoid Costly Mistakes &amp; Safeguard Your Wealth
             </h1>
             <p className="text-lg md:text-xl text-secondary-700 max-w-3xl mx-auto mb-10 leading-relaxed">
-              We match you with vetted advisors based on your unique financial needs and goals. Take the first step toward financial confidence today.
+              67% of Americans don&apos;t have an estate plan. Get matched with a vetted financial advisor who can help protect your assets and secure your future.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button

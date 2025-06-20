@@ -11,23 +11,33 @@ const CostOfNoAdvice: React.FC = () => {
   const costs = [
     {
       icon: <TrendingDown className="h-8 w-8 text-red-500" />,
-      title: "Poor Investment Decisions",
-      description: "Without expert guidance, many individuals make emotionally-driven investment choices, often buying high and selling low."
+      title: "Poor Diversification",
+      description: "Tech stocks fell hard in 2024, and investors with all their money in one area saw big losses. Spreading your money out helps reduce that risk."
     },
     {
       icon: <PiggyBank className="h-8 w-8 text-red-500" />,
-      title: "Missed Retirement Goals",
-      description: "Inadequate planning leads to insufficient savings and unrealistic expectations about retirement lifestyle."
+      title: "No Estate Plan",
+      description: "67% of Americans still don’t have a will in 2025. Without one, families can face delays and legal problems after a death."
+    },
+    {
+      icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
+      title: "Emotion-Driven Investing",
+      description: "When markets drop, many people panic and sell. But markets often bounce back selling too soon can lock in losses."
+    },
+    {
+      icon: <DollarSign className="h-8 w-8 text-red-500" />,
+      title: "Undefined Goals",
+      description: "37% of adults tapped emergency savings last year. Clear objectives help keep plans on track."
     },
     {
       icon: <DollarSign className="h-8 w-8 text-red-500" />,
       title: "Tax Inefficiencies",
-      description: "Missing out on tax-advantaged strategies can cost thousands in unnecessary tax payments over your lifetime."
+      description: "Missing out on tax-advantaged strategies can cost thousands in unnecessary payments over your lifetime."
     },
     {
       icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
       title: "Financial Stress",
-      description: "Uncertainty about your financial future creates ongoing anxiety and impacts your quality of life."
+      description: "Not having a plan or clear direction with money creates constant worry and makes it harder to feel secure about the future."
     }
   ];
 
@@ -49,7 +59,7 @@ const CostOfNoAdvice: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {costs.map((cost, index) => (
               <div 
                 key={index}
