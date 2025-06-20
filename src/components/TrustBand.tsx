@@ -17,19 +17,22 @@ const TrustBand: React.FC = () => {
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
             {/* Using grayscale logos for consistency */}
             <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
-              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Forbes</span>
+              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">The Washington Post</span>
+            </div>
+            <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
+              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">CBS</span>
+            </div>
+            <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
+              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Washington Business Journal</span>
             </div>
             <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
               <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Wall Street Journal</span>
             </div>
             <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
-              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Bloomberg</span>
+              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">ABC</span>
             </div>
             <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
-              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">CNBC</span>
-            </div>
-            <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
-              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Financial Times</span>
+              <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Yahoo!</span>
             </div>
           </div>
         </div>

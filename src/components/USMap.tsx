@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ComposableMap,
@@ -6,48 +6,76 @@ import {
   Geography
 } from 'react-simple-maps';
 
-// You can also host and use your own TopoJSON file for faster performance
-const geoUrl = '../hooks/states-10m.json';
+interface GeoState {
+  rsmKey: string;
+  properties: {
+    name: string;
+    // Using more specific types for common properties
+    state: string;
+    postal: string;
+    [key: string]: string | number;
+  };
+}
+
+const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const USMap: React.FC = () => {
   const navigate = useNavigate();
-  const [tooltip, setTooltip] = useState<{ name: string; x: number; y: number } | null>(null);
+  const [tooltipContent, setTooltipContent] = useState("");
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
-  const handleClick = (geo: any) => {
-    const stateName = geo.properties.name;
+  const handleStateClick = (stateName: string) => {
     navigate(`/find-advisor?state=${encodeURIComponent(stateName)}`);
   };
 
-  const handleMouseMove = (
-    geo: any,
-    evt: React.MouseEvent<SVGPathElement, MouseEvent>
-  ) => {
-    setTooltip({
-      name: geo.properties.name,
-      x: evt.clientX,
-      y: evt.clientY
-    });
+  const handleMouseMove = (event: React.MouseEvent, stateName: string) => {
+    setTooltipContent(stateName);
+    setTooltipPosition({ x: event.clientX, y: event.clientY });
   };
 
   return (
-    <section className="bg-gray-50 py-12">
-      <div className="container mx-auto px-4 text-center relative">
-        <h2 className="text-2xl font-bold mb-4">Find an Advisor by State</h2>
-        <div className="mx-auto inline-block max-w-full">
-          <ComposableMap projection="geoAlbersUsa" width={960} height={600}>
+    <section className="bg-primary-50 py-12">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-2xl font-bold mb-4">Find and compare financial advisors near you</h2>
+        <p className="text-lg text-secondary-700">
+              Hear from people who found their perfect financial match through our service.
+            </p>
+        <div className="relative mx-auto" style={{ maxWidth: '800px' }}>
+          <ComposableMap
+            projection="geoAlbersUsa"
+            projectionConfig={{
+              scale: 1000
+            }}
+          >
             <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map((geo) => (
+              {({ geographies }: { geographies: GeoState[] }) =>
+                geographies.map((geo: GeoState) => (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    onClick={() => handleClick(geo)}
-                    onMouseMove={(evt) => handleMouseMove(geo, evt)}
-                    onMouseLeave={() => setTooltip(null)}
+                    onClick={() => handleStateClick(geo.properties.name)}
+                    onMouseMove={(event) => handleMouseMove(event, geo.properties.name)}
+                    onMouseLeave={() => {
+                      setTooltipContent("");
+                    }}
                     style={{
-                      default: { fill: '#E0E0E0', outline: 'none' },
-                      hover: { fill: '#B0B0B0', outline: 'none' },
-                      pressed: { fill: '#7B7B7B', outline: 'none' }
+                      default: {
+                        fill: "#b9ddfe",
+                        outline: "none",
+                        stroke: "#FFF",
+                        strokeWidth: 0.5,
+                      },
+                      hover: {
+                        fill: "#36a9f8",
+                        outline: "none",
+                        stroke: "#FFF",
+                        strokeWidth: 0.5,
+                        cursor: "pointer"
+                      },
+                      pressed: {
+                        fill: "#0073c4",
+                        outline: "none"
+                      }
                     }}
                   />
                 ))
@@ -55,26 +83,16 @@ const USMap: React.FC = () => {
             </Geographies>
           </ComposableMap>
         </div>
-
-        {tooltip && (
+        {tooltipContent && (
           <div
+            className="fixed z-50 bg-white px-2 py-1 rounded-md shadow-md pointer-events-none"
             style={{
-              top: tooltip.y + 15,
-              left: tooltip.x + 15,
-              position: 'fixed',
-              background: '#fff',
-              color: '#000',
-              padding: '6px 12px',
-              borderRadius: '6px',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              border: '1px solid #ccc',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-              pointerEvents: 'none',
-              zIndex: 9999
+              left: tooltipPosition.x + 12,
+              top: tooltipPosition.y + 12,
+              transform: 'none'
             }}
           >
-            {tooltip.name}
+            {tooltipContent}
           </div>
         )}
       </div>
@@ -82,4 +100,4 @@ const USMap: React.FC = () => {
   );
 };
 
-export default USMap;
+export default memo(USMap);

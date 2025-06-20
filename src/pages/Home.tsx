@@ -12,6 +12,7 @@ import Faqs from '../components/Faqs';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import AdvertorialBanner from '../components/AdvertorialBanner';
+import USMap from '../components/USMap';
 
 const Home: React.FC = () => {
   const [showFloatingCta, setShowFloatingCta] = useState(false);
@@ -50,7 +51,8 @@ const Home: React.FC = () => {
         <HowItWorks />
         <Testimonials />
         <CtaBanner onFindAdvisorClick={handleFindAdvisorClick} />
-        <Faqs />
+        <USMap />
+        <Faqs />        
       </main>
       <Footer />
       <ScrollToTop />
