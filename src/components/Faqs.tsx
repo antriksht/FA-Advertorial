@@ -33,7 +33,7 @@ const Faqs: React.FC = () => {
     },
     {
       question: "Is there a minimum asset requirement to be matched?",
-      answer: "No, we have advisors who work with clients at various stages of their financial journey, from those just starting to build wealth to high-net-worth individuals with complex financial situations."
+      answer: "We work with individuals at all stages of their financial journey, including those just starting to build their wealth. While many of our advisors prefer clients with portfolios of $250,000 or more, you're welcome to use our service regardless of your current asset level."
     }
   ];
 
