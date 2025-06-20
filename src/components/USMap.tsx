@@ -36,9 +36,9 @@ const USMap: React.FC = () => {
   return (
     <section className="bg-primary-50 py-12">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-2xl font-bold mb-4">Find and compare financial advisors near you</h2>
+        <h2 className="text-2xl font-bold mb-4">Find and Compare Financial Advisors Near You</h2>
         <p className="text-lg text-secondary-700">
-              Hear from people who found their perfect financial match through our service.
+              Click on your state to get started and explore trusted advisor options.
             </p>
         <div className="relative mx-auto" style={{ maxWidth: '800px' }}>
           <ComposableMap

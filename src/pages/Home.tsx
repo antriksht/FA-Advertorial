@@ -51,7 +51,6 @@ const Home: React.FC = () => {
         <HowItWorks />
         <Testimonials />
         <CtaBanner onFindAdvisorClick={handleFindAdvisorClick} />
-        <USMap />
         <Faqs />        
       </main>
       <Footer />
