@@ -10,21 +10,21 @@ const Testimonials: React.FC = () => {
 
   const testimonials = [
     {
-      quote: "Working with my matched advisor completely changed my retirement outlook. I finally feel confident about my financial future.",
-      name: "Sarah J.",
-      location: "Denver, CO",
+      quote: "I was provided contact information for several reputable financial advisors and allowed to select those I wanted to consult with.",
+      name: "Bill R.",
+      location: "US",
       rating: 5
     },
     {
-      quote: "The matching process was simple and spot-on. My advisor understood exactly what I needed for my small business and personal finances.",
-      name: "Michael T.",
-      location: "Austin, TX",
+      quote: "The advisor was perfectly matched based on my wife’s and my criteria. My financial advisor knows exactly what we need. He is guiding us to make sound decisions about our future.",
+      name: "BOB K.",
+      location: "US",
       rating: 5
     },
     {
-      quote: "After years of DIY investing, I realized I needed professional help. My advisor has already saved me thousands in tax strategies alone.",
-      name: "Rebecca L.",
-      location: "Seattle, WA",
+      quote: "Was concerned that I would be inundated with possible matches. Three selections were good match for me. Able to narrow it down with first telephone conversation. Thank you.",
+      name: "Barbara Budros",
+      location: "US",
       rating: 5
     }
   ];
@@ -71,9 +71,7 @@ const Testimonials: React.FC = () => {
           </div>
           
           <div className="mt-12 text-center">
-            <p className="text-secondary-600 text-sm">
-              *Individual results may vary. Testimonials are from actual clients who found advisors through our service.
-            </p>
+            <p className="text-secondary-600 text-sm">*Individual results may vary. Testimonials are from actual clients who found advisors through our service. You can also view our reviews on <a href="https://www.trustpilot.com/review/www.wiseradvisor.com" target="_blank" rel="noopener noreferrer" className="underline text-primary-600 hover:text-primary-700">Trustpilot here</a>.</p>
           </div>
         </div>
       </div>
