@@ -12,19 +12,19 @@ const Testimonials: React.FC = () => {
     {
       quote: "I was provided contact information for several reputable financial advisors and allowed to select those I wanted to consult with.",
       name: "Bill R.",
-      location: "US",
+      location: "",
       rating: 5
     },
     {
       quote: "The advisor was perfectly matched based on my wife’s and my criteria. My financial advisor knows exactly what we need. He is guiding us to make sound decisions about our future.",
       name: "BOB K.",
-      location: "US",
+      location: "",
       rating: 5
     },
     {
       quote: "Was concerned that I would be inundated with possible matches. Three selections were good match for me. Able to narrow it down with first telephone conversation. Thank you.",
-      name: "Barbara Budros",
-      location: "US",
+      name: "Barbara B.",
+      location: "",
       rating: 5
     }
   ];

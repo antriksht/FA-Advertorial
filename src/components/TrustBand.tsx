@@ -1,5 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import featuredLogos from '../assets/featured-logos.png';
 
 const TrustBand: React.FC = () => {
   const { ref, inView } = useInView({
@@ -12,10 +13,11 @@ const TrustBand: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className={`transition duration-700 ${inView ? 'opacity-100' : 'opacity-0'}`}>
           <p className="text-center text-sm text-secondary-500 uppercase font-medium tracking-wider mb-6">
-            Our Advisors Have Been Featured In
+            AS FEATURED ON
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
             {/* Using grayscale logos for consistency */}
+            {/*
             <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
               <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Forbes</span>
             </div>
@@ -31,6 +33,10 @@ const TrustBand: React.FC = () => {
             <div className="flex items-center grayscale opacity-70 hover:opacity-100 transition duration-300">
               <span className="font-serif font-bold text-xl md:text-2xl text-secondary-800">Financial Times</span>
             </div>
+            */}
+            <img src={featuredLogos} alt="Featured financial firms"
+              className="mx-auto mt-8 max-w-full h-auto"
+            />
           </div>
         </div>
       </div>

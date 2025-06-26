@@ -13,7 +13,7 @@ const Faqs: React.FC = () => {
   const faqs = [
     {
       question: "Is this a free service?",
-      answer: "Yes, our matching service is completely free for consumers. We are compensated by the financial advisors in our network when they acquire new clients through our platform."
+      answer: "Yes, our advisor matching service is completely free for consumers. We’re compensated by the financial advisors and firms in our network when a successful match is made through our platform. There’s no cost or obligation for the consumer."
     },
     {
       question: "What if I already have an advisor?",
@@ -21,19 +21,26 @@ const Faqs: React.FC = () => {
     },
     {
       question: "Will I be contacted directly?",
-      answer: "After completing the matching process, the advisors we recommend may reach out to you directly via email or phone to introduce themselves. You're under no obligation to speak with them or use their services."
+      answer: (
+        <>
+          Yes, we will contact you to verify your information so we can ensure the best advisor match. Once matched, the recommended 2 to 3 advisors will reach out directly by email or phone to introduce themselves.
+          <br />
+          <br />
+          This is a great opportunity to ask questions, get to know them, and take advantage of the free initial consultation. There’s absolutely no obligation to hire anyone.
+        </>
+      )
     },
     {
       question: "How do you vet the advisors?",
-      answer: "Our advisors undergo a thorough screening process, including verification of credentials, regulatory record checks, and an evaluation of their experience and areas of expertise. We only work with licensed financial professionals who meet our standards."
+      answer: "All advisors in our network go through a rigorous screening process, which includes credential verification, regulatory background checks, and a review of their compensation structure to ensure they are fee-only or fee-based. We work exclusively with licensed financial professionals who meet our standards."
     },
     {
       question: "What types of financial advisors are in your network?",
-      answer: "Our network includes Certified Financial Planners (CFPs), Registered Investment Advisors (RIAs), wealth managers, retirement specialists, and other financial professionals who can address a wide range of financial planning and investment needs."
+      answer: "Our network includes Certified Financial Planners (CFPs), Registered Investment Advisors (RIAs), wealth managers, retirement specialists, and other financial professionals who can address a wide range of financial planning, retirement, and investment needs."
     },
     {
       question: "Is there a minimum asset requirement to be matched?",
-      answer: "No, we have advisors who work with clients at various stages of their financial journey, from those just starting to build wealth to high-net-worth individuals with complex financial situations."
+      answer: "Yes, the minimum asset requirement is $100,000. Our network includes advisors who work with clients across a wide range of financial situations—from individuals just beginning to build wealth to high-net-worth clients with more complex financial needs."
     }
   ];
 

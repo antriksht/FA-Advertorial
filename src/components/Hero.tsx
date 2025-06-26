@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ onFindAdvisorClick }) => {
               Your Financial Goals Deserve the Right Advisor
             </h1>
             <p className="text-lg md:text-xl text-secondary-700 max-w-3xl mx-auto mb-10 leading-relaxed">
-              We match you with vetted advisors based on your unique financial needs and goals. Take the first step toward financial confidence today.
+              We match you with vetted advisors based on your unique financial needs and goals. Take the first step toward financial success today.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
@@ -39,12 +39,14 @@ const Hero: React.FC<HeroProps> = ({ onFindAdvisorClick }) => {
                 Find My Financial Advisor
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
+              {/*
               <button
                 onClick={() => document.getElementById('why-advisor')?.scrollIntoView({ behavior: 'smooth' })}
                 className="py-4 px-8 border border-brand text-brand font-semibold rounded-lg hover:bg-brand/10 transition duration-300"
               >
                 Learn More
               </button>
+              */}
             </div>
           </div>
         </div>

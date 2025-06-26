@@ -18,13 +18,13 @@ const HowItWorks: React.FC = () => {
     {
       icon: <Users className="h-10 w-10 text-primary-500" />,
       title: "Get Matched with a Professional",
-      description: "Our algorithm connects you with up to three vetted advisors who specialize in your specific needs.",
+      description: "We match you with 2 to 3 vetted financial advisors tailored to your specific financial needs.",
       color: "bg-primary-100"
     },
     {
       icon: <TrendingUp className="h-10 w-10 text-secondary-700" />,
       title: "Start Planning Your Financial Future",
-      description: "Schedule a no-obligation consultation to discuss your goals and begin your journey to financial confidence.",
+      description: "Schedule a no-obligation call with the advisors to discuss your goals and begin your journey to financial success.",
       color: "bg-secondary-100"
     }
   ];
@@ -75,7 +75,7 @@ const HowItWorks: React.FC = () => {
 
           <div className={`mt-16 text-center transition duration-700 delay-500 ${inView ? 'opacity-100' : 'opacity-0'}`}>
             <p className="text-lg text-secondary-700 font-medium max-w-2xl mx-auto">
-              Our service is completely free, and there's never any obligation to hire an advisor after matching.
+              Our service is completely free, and there's never any obligation to hire an advisor.
             </p>
           </div>
         </div>

@@ -22,12 +22,12 @@ const CostOfNoAdvice: React.FC = () => {
     {
       icon: <DollarSign className="h-8 w-8 text-red-500" />,
       title: "Tax Inefficiencies",
-      description: "Missing out on tax-advantaged strategies can cost thousands in unnecessary tax payments over your lifetime."
+      description: "Missing out on tax-advantaged strategies can cost thousands in unnecessary tax payments over a lifetime."
     },
     {
       icon: <AlertTriangle className="h-8 w-8 text-red-500" />,
       title: "Financial Stress",
-      description: "Uncertainty about your financial future creates ongoing anxiety and impacts your quality of life."
+      description: "Uncertainty about one's financial future creates ongoing anxiety and impacts quality of life."
     }
   ];
 
@@ -45,6 +45,7 @@ const CostOfNoAdvice: React.FC = () => {
             </h2>
             <p className="text-lg text-secondary-700">
               Many Americans navigate complex financial decisions without expert guidance.
+              <br />
               Here's what that could be costing you:
             </p>
           </div>
