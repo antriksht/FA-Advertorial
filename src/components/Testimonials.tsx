@@ -59,7 +59,7 @@ const Testimonials: React.FC = () => {
                   ))}
                 </div>
                 <div className="mb-6 flex-grow">
-                  <Quote className="h-8 w-8 text-primary-200 mb-2" />
+                  <Quote className="h-8 w-8 text-[#D2E4E5] fill-[#D2E4E5] mb-2" />
                   <p className="text-secondary-700 italic">"{testimonial.quote}"</p>
                 </div>
                 <div>
