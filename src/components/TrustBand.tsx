@@ -9,10 +9,10 @@ const TrustBand: React.FC = () => {
   });
 
   return (
-    <section ref={ref} className="py-8 bg-white border-y border-gray-100">
+    <section ref={ref} className="py-8 bg-[#D2E4E5] border-y border-gray-100">
       <div className="container mx-auto px-4">
         <div className={`transition duration-700 ${inView ? 'opacity-100' : 'opacity-0'}`}>
-          <p className="text-center text-sm text-secondary-500 uppercase font-medium tracking-wider mb-6">
+          <p className="text-center text-m text-secondary-600 font-bold tracking-wider mb-6">
             AS FEATURED ON
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">

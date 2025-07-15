@@ -15,9 +15,9 @@
 
 @layer components {
   .cta-button {
-    @apply bg-brand text-white font-semibold rounded-lg transition duration-300 shadow-md;
+    @apply bg-[#CA2D26] text-white font-semibold rounded-lg transition duration-300 shadow-md;
   }
   .cta-button:hover {
-    @apply bg-brand-dark;
+    @apply bg-[#a82520];
   }
 }

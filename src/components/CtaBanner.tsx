@@ -27,7 +27,7 @@ const CtaBanner: React.FC<CtaBannerProps> = ({ onFindAdvisorClick }) => {
             inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="font-inter text-3xl md:text-4xl font-medium text-white mb-6">
             Don't Leave Your Financial Future to Chance
           </h2>
           <p className="text-xl text-primary-100 mb-10 max-w-2xl mx-auto">
@@ -35,7 +35,7 @@ const CtaBanner: React.FC<CtaBannerProps> = ({ onFindAdvisorClick }) => {
           </p>
           <button
             onClick={onFindAdvisorClick}
-            className="cta-button py-4 px-8 inline-flex items-center group"
+            className="bg-[#272525] hover:bg-black text-white font-semibold rounded-lg transition duration-300 shadow-md py-4 px-8 inline-flex items-center group"
           >
             Get Matched Now
             <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />

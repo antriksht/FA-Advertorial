@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, ShieldCheck, Target, Lightbulb } from 'lucide-react';
+import { BookOpen,LineChart, ShieldCheck, Target, Lightbulb } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
 const AdvisorValue: React.FC = () => {
@@ -10,22 +10,22 @@ const AdvisorValue: React.FC = () => {
 
   const benefits = [
     {
-      icon: <Target className="h-10 w-10 text-primary-500" />,
+      icon: <Target className="h-10 w-10 text-primary-800" />,
       title: "Personalized Strategy",
       description: "Receive a tailored financial plan based on your unique life stage, goals, and risk tolerance."
     },
     {
-      icon: <LineChart className="h-10 w-10 text-primary-500" />,
+      icon: <LineChart className="h-10 w-10 text-primary-800" />,
       title: "Tax & Retirement Optimization",
       description: "Maximize tax advantages and ensure your retirement strategy aligns with your long-term vision."
     },
     {
-      icon: <Lightbulb className="h-10 w-10 text-primary-500" />,
+      icon: <BookOpen className="h-10 w-10 text-primary-800" />,
       title: "Expert Market Guidance",
       description: "Navigate market uncertainty with professional insights and evidence-based investment approaches."
     },
     {
-      icon: <ShieldCheck className="h-10 w-10 text-primary-500" />,
+      icon: <ShieldCheck className="h-10 w-10 text-primary-800" />,
       title: "Fiduciary Approach",
       description: "Work with advisors legally obligated to put your financial interests first in every recommendation."
     }
@@ -35,15 +35,15 @@ const AdvisorValue: React.FC = () => {
     <section 
       id="advisor-value"
       ref={ref}
-      className="py-16 md:py-24 bg-gradient-to-b from-white to-primary-50 scroll-mt-20"
+      className="py-16 md:py-10 bg-gradient-to-b from-white to-primary-50 scroll-mt-20"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className={`transition duration-700 ${inView ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 mb-6">
+            <h2 className="font-inter text-3xl md:text-4xl font-medium text-primary-800 mb-6">
               How a Vetted Advisor Adds Value
             </h2>
-            <p className="text-lg text-secondary-700">
+            <p className="font-inter text-lg md:text-m text-secondary-600 max-w-3xl mx-auto mb-10 leading-relaxed">
               The right financial advisor can be the difference between hoping for financial security and confidently building it.
             </p>
           </div>
@@ -57,12 +57,12 @@ const AdvisorValue: React.FC = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="mr-5 mt-1">
-                  <div className="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full">
+                  <div className="flex items-center justify-center w-16 h-16 bg-[#D2E4E5] rounded-full">
                     {benefit.icon}
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-primary-800 mb-3">
+                  <h3 className="text-xl font-semibold text-[#424444] mb-3">
                     {benefit.title}
                   </h3>
                   <p className="text-secondary-600">

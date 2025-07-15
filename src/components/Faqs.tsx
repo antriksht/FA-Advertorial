@@ -57,10 +57,10 @@ const Faqs: React.FC = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className={`transition duration-700 ${inView ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 mb-6">
+            <h2 className="font-inter text-3xl md:text-4xl font-medium text-primary-800 mb-6">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-secondary-700">
+            <p className="font-inter text-lg md:text-m text-secondary-600 max-w-3xl mx-auto mb-10 leading-relaxed">
               Get answers to common questions about our advisor matching service.
             </p>
           </div>

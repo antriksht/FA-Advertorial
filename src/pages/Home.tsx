@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import TrustBand from '../components/TrustBand';
 import CostOfNoAdvice from '../components/CostOfNoAdvice';
@@ -14,7 +12,6 @@ import ScrollToTop from '../components/ScrollToTop';
 
 const Home: React.FC = () => {
   const [showFloatingCta, setShowFloatingCta] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,12 +31,11 @@ const Home: React.FC = () => {
 
   const handleFindAdvisorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    navigate('/find-advisor');
+    window.location.href = 'https://compare.financialadvisor.net/financial-advisor-match/?src=';
   };
 
   return (
     <div className="min-h-screen bg-white text-secondary-900">
-      <Header onFindAdvisorClick={handleFindAdvisorClick} />
       <main>
         <Hero onFindAdvisorClick={handleFindAdvisorClick} />
         <TrustBand />

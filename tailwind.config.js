@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#37628b',
+          DEFAULT: '#00537C',
           dark: '#2c4f73',
         },
         primary: {
@@ -17,8 +17,8 @@ export default {
           500: '#0c90e6',
           600: '#0073c4',
           700: '#015b9e',
-          800: '#37628b',
-          900: '#37628b',
+          800: '#00537C',
+          900: '#00537C',
           950: '#062a4b',
         },
         secondary: {

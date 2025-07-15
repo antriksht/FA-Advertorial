@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/fa-logo.png';
 
 interface HeaderProps {
   onFindAdvisorClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isScrolled: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick, isScrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -32,11 +22,12 @@ const Header: React.FC<HeaderProps> = ({ onFindAdvisorClick }) => {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
+      style={{ top: isScrolled ? '0' : '40px' }} // Adjust top position based on scroll
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img src={logo} alt="FinancialAdvisor.net logo" className="h-8 w-auto" />
+            <img src={logo} alt="FinancialAdvisor.net logo" className="h-6 w-auto" />
           </div>
           
           {/* Desktop Navigation */}
