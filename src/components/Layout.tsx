@@ -4,6 +4,17 @@ import Header from './Header';
 
 const Layout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,9 +27,24 @@ const Layout: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
+  const getForwardingParams = () => {
+    const params = new URLSearchParams(window.location.search);
+    const forwardingParams: { [key: string]: string } = {};
+    params.forEach((value, key) => {
+      if (key.startsWith('utm_') || key === 'gclid' || key === 'msclkid') {
+        forwardingParams[key] = value;
+      }
+    });
+    return new URLSearchParams(forwardingParams).toString();
+  };
+
   const handleFindAdvisorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    window.location.href = 'https://compare.financialadvisor.net/financial-advisor-match/?src=';
+    const baseKwd = 'header_cta';
+    const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
+    const forwardingQueryString = getForwardingParams();
+    const destinationUrl = `https://compare.financialadvisor.net/financial-advisor-match/?kwd=${kwd}&${forwardingQueryString}`;
+    window.location.href = destinationUrl;
   };
 
   return (
