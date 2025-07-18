@@ -3,7 +3,7 @@ import logo from '../assets/fa-logo.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#F5F6F7] text-secondary-700 py-12">
+    <footer className="bg-[#F5F6F7] text-secondary-700 pt-8 pb-12">
       <div className="container mx-auto px-4 lg:px-8 text-center">
         
         <img src={logo} alt="FinancialAdvisor.net logo" className="h-4 w-auto mx-auto mb-8" />

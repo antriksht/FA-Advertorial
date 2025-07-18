@@ -7,6 +7,7 @@ import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
 import CtaBanner from '../components/CtaBanner';
 import Faqs from '../components/Faqs';
+import ZipCodeBar from '../components/ZipCodeBar';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 
@@ -42,9 +43,10 @@ const Home: React.FC = () => {
         <CostOfNoAdvice />
         <AdvisorValue />
         <HowItWorks />
-        <Testimonials />
         <CtaBanner onFindAdvisorClick={handleFindAdvisorClick} />
+        <Testimonials />
         <Faqs />
+        <ZipCodeBar />
       </main>
       <Footer />
       <ScrollToTop />
