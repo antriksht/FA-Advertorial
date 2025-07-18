@@ -59,7 +59,7 @@ const ZipCodeBar: React.FC = () => {
               className="px-4 py-3 border border-gray-300 rounded-lg md:rounded-r-none md:border-r-0 w-full md:w-auto"
               minLength={5}
               pattern="^[0-9]{5}"
-              title="Provided zip code is invalid"
+              title="Please enter a valid zip code"
             />
             <div style={{ textAlign: 'left', color: 'red', margin: '0px auto', maxWidth: '347px' }}>
               {error}
