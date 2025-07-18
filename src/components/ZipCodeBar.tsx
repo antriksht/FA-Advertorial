@@ -10,7 +10,7 @@ const ZipCodeBar: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 pb-0 pt-8">
+    <div className="bg-gray-100 pb-4 pt-4">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
         <input
           type="text"
