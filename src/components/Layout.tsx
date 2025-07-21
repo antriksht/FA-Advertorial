@@ -43,7 +43,7 @@ const Layout: React.FC = () => {
     const baseKwd = 'header_cta';
     const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
     const forwardingQueryString = getForwardingParams();
-    const destinationUrl = `https://compare.financialadvisor.net/financial-advisor-match/?kwd=${kwd}&${forwardingQueryString}`;
+    const destinationUrl = `https://match.financialadvisor.net/?kwd=${kwd}&${forwardingQueryString}`;
     window.location.href = destinationUrl;
   };
 

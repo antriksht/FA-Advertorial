@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import bgImage from '../assets/abstract_bg_zipCodeBanner.png';
 
-const ZipCodeBar: React.FC = () => {
+interface ZipCodeBarProps {
+  kwd?: string;
+  buttonText?: string;
+}
+
+const ZipCodeBar: React.FC<ZipCodeBarProps> = ({ 
+  kwd: baseKwd = 'ppc_zip_code_bar',
+  buttonText = 'Find an Advisor' 
+}) => {
   const [zipCode, setZipCode] = useState('');
   const [error, setError] = useState('');
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -39,10 +47,9 @@ const ZipCodeBar: React.FC = () => {
     }
 
     setError('');
-    const baseKwd = 'ppc_zip_code_bar';
     const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
     const forwardingQueryString = getForwardingParams();
-    const destinationUrl = `https://compare.financialadvisor.net/financial-advisor-match/?zip_code=${zipCode}&kwd=${kwd}&${forwardingQueryString}`;
+    const destinationUrl = `https://match.financialadvisor.net/?zip_code=${zipCode}&kwd=${kwd}&${forwardingQueryString}`;
     
     window.location.href = destinationUrl;
   };
@@ -79,7 +86,7 @@ const ZipCodeBar: React.FC = () => {
             type="submit"
             className="cta-button py-3 px-6 rounded-lg md:rounded-l-none w-full md:w-auto mt-2 md:mt-0"
           >
-            Find an Advisor
+            {buttonText}
           </button>
         </form>
       </div>

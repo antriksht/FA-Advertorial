@@ -10,11 +10,12 @@ import Faqs from '../components/Faqs';
 import ZipCodeBar from '../components/ZipCodeBar';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import ExitIntentPopup from '../components/ExitIntentPopup';
 
 const Home: React.FC = () => {
   const [showFloatingCta, setShowFloatingCta] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -56,7 +57,7 @@ const Home: React.FC = () => {
     event.preventDefault();
     const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
     const forwardingQueryString = getForwardingParams();
-    const destinationUrl = `https://compare.financialadvisor.net/financial-advisor-match/?kwd=${kwd}&${forwardingQueryString}`;
+    const destinationUrl = `https://match.financialadvisor.net/?kwd=${kwd}&${forwardingQueryString}`;
     window.location.href = destinationUrl;
   };
 
@@ -75,6 +76,7 @@ const Home: React.FC = () => {
       </main>
       <Footer />
       <ScrollToTop />
+      <ExitIntentPopup />
 
       {showFloatingCta && (
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-white bg-opacity-95 shadow-lg border-t border-gray-200 md:hidden animate-fade-in z-50">
