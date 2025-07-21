@@ -1,8 +1,12 @@
 import React from 'react';
-import { BookOpen,LineChart, ShieldCheck, Target, Lightbulb } from 'lucide-react';
+import { BookOpen,LineChart, ShieldCheck, Target, Lightbulb, ArrowRight } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
-const AdvisorValue: React.FC = () => {
+interface AdvisorValueProps {
+  onFindAdvisorClick: () => void;
+}
+
+const AdvisorValue: React.FC<AdvisorValueProps> = ({ onFindAdvisorClick }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -95,6 +99,17 @@ const AdvisorValue: React.FC = () => {
                 <p className="text-sm text-primary-100">of advised clients feel better prepared for market volatility</p>
               </div>
             </div>
+
+            <div className="mt-10 text-center">
+              <button
+                onClick={onFindAdvisorClick}
+                className="cta-button py-4 px-8 flex items-center justify-center group mx-auto"
+              >
+                Get Matched Now
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+            </div>
+
             <p className="text-xs text-primary-200 mt-6 text-center">*Based on industry research on the value of financial advice. Individual results may vary.</p>
           </div>
         </div>

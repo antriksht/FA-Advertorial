@@ -66,7 +66,7 @@ const Home: React.FC = () => {
         <Hero onFindAdvisorClick={handleFindAdvisorClick('hero_cta')} />
         <TrustBand />
         <CostOfNoAdvice />
-        <AdvisorValue />
+        <AdvisorValue onFindAdvisorClick={handleFindAdvisorClick('advisor_value_cta')} />
         <HowItWorks />
         <CtaBanner onFindAdvisorClick={handleFindAdvisorClick('cta_banner')} />
         <Testimonials />

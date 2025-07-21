@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import bgImage from '../assets/abstract_bg_zipCodeBanner.png';
 
 const ZipCodeBar: React.FC = () => {
   const [zipCode, setZipCode] = useState('');
@@ -47,7 +48,16 @@ const ZipCodeBar: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F5F6F7] pb-4 pt-4">
+    <div
+      className="bg-primary-700 pb-10 pt-10"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: isMobile ? 'right top' : 'center',
+        backgroundSize: 'cover',
+        backgroundBlendMode: 'multiply',
+      }}
+    >
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-center justify-center w-full">
           <div className="w-full md:w-auto">
