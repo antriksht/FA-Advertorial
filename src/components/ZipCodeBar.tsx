@@ -7,7 +7,7 @@ interface ZipCodeBarProps {
 }
 
 const ZipCodeBar: React.FC<ZipCodeBarProps> = ({ 
-  kwd: baseKwd = 'ppc_zip_code_bar',
+  kwd: baseKwd = 'zip_code_bar',
   buttonText = 'Find an Advisor' 
 }) => {
   const [zipCode, setZipCode] = useState('');
@@ -49,7 +49,7 @@ const ZipCodeBar: React.FC<ZipCodeBarProps> = ({
     setError('');
     const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
     const forwardingQueryString = getForwardingParams();
-    const destinationUrl = `https://match.financialadvisor.net/?zip_code=${zipCode}&kwd=${kwd}&${forwardingQueryString}`;
+    const destinationUrl = `https://match.financialadvisor.net/?zip=${zipCode}&kwd=${kwd}&${forwardingQueryString}`;
     
     window.location.href = destinationUrl;
   };
