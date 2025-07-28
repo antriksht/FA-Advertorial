@@ -4,7 +4,6 @@
 
 ## 🚀 Features
 
-- Multi-step advisor matching form with progress indicators
 - Responsive design powered by Tailwind CSS
 - Client-side routing with React Router
 - Optimized build and fast HMR via Vite
@@ -18,7 +17,6 @@
 - **Styling:** Tailwind CSS & PostCSS
 - **Routing:** React Router v6
 - **Icons:** FontAwesome & Lucide React
-- **Forms & UI:** Headless UI
 
 ## 📁 Project Structure
 
@@ -34,8 +32,8 @@
    ├─ App.tsx                 # Application routes & layout
    ├─ index.css               # Global styles (Tailwind imports)
    ├─ assets/                 # Static images & assets
-   ├─ components/             # Reusable UI components & multi-step form
-   └─ pages/                  # Page components (Home, FindAdvisorPage)
+   ├─ components/             # Reusable UI components
+   └─ pages/                  # Page components (Home)
 ```
 
 ## ⚙️ Installation & Development
