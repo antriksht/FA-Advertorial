@@ -34,27 +34,27 @@ const ExitIntentPopup: React.FC = () => {
         >
           <X size={28} />
         </button>
-        
+
         <img src={faLogo} alt="Financial Advisor Logo" className="h-6 mx-auto mb-6" />
 
         <p className="text-xs font-bold text-primary-700 tracking-wider mb-4">
           TRUSTED BY MILLIONS OF CONSUMERS TO FIND TOP ADVISORS SUITED TO THEIR NEEDS
         </p>
-        
+
         <h2 className="text-4xl font-bold text-primary-900 mb-3">
           SET YOURSELF UP FOR FINANCIAL SUCCESS.
         </h2>
-        
+
         <div className="bg-gray-50 p-6 rounded-lg">
           <p className="text-secondary-700 font-medium mb-4">
             Get matched to vetted financial advisors and compare credentials, fees, and more for free.
           </p>
-          <ZipCodeBar 
-            kwd="exit_intent_popup_start_now" 
-            buttonText="Find an Advisor" 
+          <ZipCodeBar
+            kwd="exit_popup"
+            buttonText="Find an Advisor"
           />
         </div>
-        
+
         <p className="text-xs text-secondary-500">
           Completely Private and Confidential
         </p>

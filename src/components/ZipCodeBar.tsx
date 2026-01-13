@@ -6,9 +6,9 @@ interface ZipCodeBarProps {
   buttonText?: string;
 }
 
-const ZipCodeBar: React.FC<ZipCodeBarProps> = ({ 
+const ZipCodeBar: React.FC<ZipCodeBarProps> = ({
   kwd: baseKwd = 'zip_code_bar',
-  buttonText = 'Find an Advisor' 
+  buttonText = 'Find an Advisor'
 }) => {
   const [zipCode, setZipCode] = useState('');
   const [error, setError] = useState('');
@@ -28,7 +28,7 @@ const ZipCodeBar: React.FC<ZipCodeBarProps> = ({
     const params = new URLSearchParams(window.location.search);
     const forwardingParams: { [key: string]: string } = {};
     params.forEach((value, key) => {
-      if (key.startsWith('utm_') || key === 'gclid' || key === 'msclkid') {
+      if (key.startsWith('utm_')) {
         forwardingParams[key] = value;
       }
     });
@@ -47,10 +47,17 @@ const ZipCodeBar: React.FC<ZipCodeBarProps> = ({
     }
 
     setError('');
-    const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
+    const params = new URLSearchParams(window.location.search);
+    const gclid = params.get('gclid');
+    const msclkid = params.get('msclkid');
+
+    let kwd = `adv_${isMobile ? 'mobile_' : ''}${baseKwd}`;
+    if (gclid) kwd += `_gclid_${gclid}`;
+    if (msclkid) kwd += `_msclkid_${msclkid}`;
+
     const forwardingQueryString = getForwardingParams();
-    const destinationUrl = `https://match.financialadvisor.net/?zip=${zipCode}&kwd=${kwd}&${forwardingQueryString}`;
-    
+    const destinationUrl = `https://compare.financialadvisor.net/?zip=${zipCode}&kwd=${kwd}&${forwardingQueryString}`;
+
     window.location.href = destinationUrl;
   };
 

@@ -20,18 +20,18 @@ const Layout: React.FC = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       // The banner is 40px tall, so we'll consider the header sticky after scrolling past that.
-      setIsScrolled(scrollPosition > 40); 
+      setIsScrolled(scrollPosition > 40);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   const getForwardingParams = () => {
     const params = new URLSearchParams(window.location.search);
     const forwardingParams: { [key: string]: string } = {};
     params.forEach((value, key) => {
-      if (key.startsWith('utm_') || key === 'gclid' || key === 'msclkid') {
+      if (key.startsWith('utm_')) {
         forwardingParams[key] = value;
       }
     });
@@ -40,10 +40,17 @@ const Layout: React.FC = () => {
 
   const handleFindAdvisorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    const params = new URLSearchParams(window.location.search);
+    const gclid = params.get('gclid');
+    const msclkid = params.get('msclkid');
+
     const baseKwd = 'header_cta';
-    const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
+    let kwd = `adv_${isMobile ? 'mobile_' : ''}${baseKwd}`;
+    if (gclid) kwd += `_gclid_${gclid}`;
+    if (msclkid) kwd += `_msclkid_${msclkid}`;
+
     const forwardingQueryString = getForwardingParams();
-    const destinationUrl = `https://match.financialadvisor.net/?kwd=${kwd}&${forwardingQueryString}`;
+    const destinationUrl = `https://compare.financialadvisor.net/?kwd=${kwd}&${forwardingQueryString}`;
     window.location.href = destinationUrl;
   };
 

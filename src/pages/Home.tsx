@@ -15,7 +15,7 @@ import ExitIntentPopup from '../components/ExitIntentPopup';
 const Home: React.FC = () => {
   const [showFloatingCta, setShowFloatingCta] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -46,18 +46,25 @@ const Home: React.FC = () => {
     const params = new URLSearchParams(window.location.search);
     const forwardingParams: { [key: string]: string } = {};
     params.forEach((value, key) => {
-      if (key.startsWith('utm_') || key === 'gclid' || key === 'msclkid') {
+      if (key.startsWith('utm_')) {
         forwardingParams[key] = value;
       }
     });
     return new URLSearchParams(forwardingParams).toString();
   };
 
-  const handleFindAdvisorClick = (baseKwd: string) => (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const kwd = isMobile ? `mobile_${baseKwd}` : baseKwd;
+  const handleFindAdvisorClick = (baseKwd: string) => (event?: React.MouseEvent<HTMLButtonElement>) => {
+    if (event) event.preventDefault();
+    const params = new URLSearchParams(window.location.search);
+    const gclid = params.get('gclid');
+    const msclkid = params.get('msclkid');
+
+    let kwd = `adv_${isMobile ? 'mobile_' : ''}${baseKwd}`;
+    if (gclid) kwd += `_gclid_${gclid}`;
+    if (msclkid) kwd += `_msclkid_${msclkid}`;
+
     const forwardingQueryString = getForwardingParams();
-    const destinationUrl = `https://match.financialadvisor.net/?kwd=${kwd}&${forwardingQueryString}`;
+    const destinationUrl = `https://compare.financialadvisor.net/?kwd=${kwd}&${forwardingQueryString}`;
     window.location.href = destinationUrl;
   };
 
